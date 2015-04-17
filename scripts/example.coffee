@@ -11,7 +11,7 @@
 module.exports = (robot) ->
 
   robot.hear /hey/i, (msg) ->
-    msg.send "HEEEEEEEEEEEEEEEEY!!!!!!!!!!!!!! WHAAAAAAAAAAAAAAATS UUUUUUUUUP BROOOOOOOOOOOO!!!!!!!!!!!!!!"
+    msg.send "Hi."
 
   robot.hear /badger/i, (msg) ->
     msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"

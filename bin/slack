@@ -2,6 +2,5 @@
 
 export HUBOT_SLACK_TOKEN=xoxb-4485245289-XnHZNhL4NNkwW7tuzb1Tg6EE
 export HUBOT_LOG_LEVEL=debug
-#export PORT=9191
 
 forever -e stde.log -o stdo.log start -c coffee node_modules/.bin/hubot --adapter slack --name pedestrian
