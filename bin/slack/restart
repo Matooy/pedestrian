@@ -1,0 +1,2 @@
+bin/slack/stop
+bin/slack/start

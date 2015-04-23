@@ -1,19 +1,21 @@
 child_process = require 'child_process'
 
 module.exports = (robot) ->
-  robot.hear /bot.*reborn/, (bot) ->
+  robot.respond /pull/, (msg) ->
     try
-      robot.adapter.notice bot.envelope, "updating..."
+      msg.send "git pulling..."
       child_process.exec 'git pull', (error, stdout, stderr) ->
         if error
-          robot.adapter.notice bot.envelope, "git pull failed: " + stderr
+          msg.send "get pull failed: " + stderr
         else
           output = stdout+''
           if not /Already up\-to\-date/.test output
-            robot.adapter.notice bot.envelope, "botが更新されました: " + output
-            robot.adapter.notice bot.envelope, "再起動します"
-            process.exit()
+            msg.send "Updated!!"
+            setTimeout () ->
+              msg.send "Restarting..."
+              process.exit()
+            , 500
           else
-            robot.adapter.notice bot.envelope, "botは最新です"
+            msg.send "Nothing to do."
     catch e
-      robot.adapter.notice bot.envelope, "git pull failed:" + e
+      msg.send "git pull failed: " + e

@@ -10,12 +10,6 @@
 
 module.exports = (robot) ->
 
-  robot.hear /hey/i, (msg) ->
-    msg.send "Hi."
-
-  robot.hear /badger/i, (msg) ->
-    msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
-
   robot.respond /open the (.*) doors/i, (msg) ->
     doorType = msg.match[1]
     if doorType is "pod bay"
@@ -90,7 +84,7 @@ module.exports = (robot) ->
     robot.logger.error "DOES NOT COMPUTE"
 
     if msg?
-      msg.reply "DOES NOT COMPUTE"
+      msg.reply "DOES NOT COMPUTE" + err.message
 
   robot.respond /have a soda/i, (msg) ->
     # Get number of sodas had (coerced to a number).
